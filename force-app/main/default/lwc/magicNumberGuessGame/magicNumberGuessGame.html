@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Magic Number Guess Game" icon-name="custom:custom14">
+        <div class="slds-p-around_medium">
+            <lightning-input label="Enter your guess" type="number" value={guess} onchange={handleGuessChange}></lightning-input>
+            <lightning-button label="Submit Guess" onclick={handleGuess} class="slds-m-top_medium"></lightning-button>
+            <lightning-button label="Restart Game" onclick={restartGame} class="slds-m-top_medium slds-m-left_small"></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <p>{feedback}</p>
+            <p>Number of Attempts: {attempts}</p>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_fixed-layout">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Guess">Guess</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Feedback">Feedback</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={history} for:item="item">
+                        <tr key={item.id}>
+                            <td>{item.guess}</td>
+                            <td>{item.feedback}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>
